@@ -9,123 +9,155 @@ cytoscape.use(dagre);
 navigator(cytoscape);
 
 const cy = cytoscape({
-  container: document.getElementById('cy'), // container to render in
+  container: document.getElementById('cy'),
   style: [
-    // the stylesheet for the graph
-      {
-        selector: 'node',
-        style: {
-          'background-color': 'white',
-          'border-color': '#333',
-          'border-width': 2,
-          'label': 'data(label)',
-          'text-valign': 'center',
-          'text-halign': 'center',
-          'shape': 'rectangle',
-          'text-wrap': 'wrap',
-          'text-max-width': '150px',
-          'font-size': '12px'
-        }
-      },
-      {
-        selector: 'edge',
-        style: {
-          'width': 2,
-          'line-color': '#333',
-          'target-arrow-color': '#333',
-          'target-arrow-shape': 'triangle',
-          'curve-style': 'bezier'
-        }
-      },
-      {
-        selector: 'edge[style = "dashed"]',
-        style: {
-          'width': 2,
-          'line-color': '#333',
-          'line-style': 'dashed',
-          'target-arrow-color': '#333',
-          'target-arrow-shape': 'triangle',
-          'curve-style': 'bezier'
-        }
-      },
-      {
-        selector: '.first',
-        style: {
-          'background-color': '#d4e6f7'
-        }
-      },
-      {
-        selector: '.second',
-        style: {
-          'background-color': '#ffd7b3'
-        }
-      },
-      {
-        selector: '.third',
-        style: {
-          'background-color': '#d5e8d4'
-        }
-      },
-      {
-        selector: '.recommended',
-        style: {
-          'line-style': 'dashed'
-        }
-      },
-      {
-        selector: '.choice',
-        style: {
-          'background-color': 'white'
-        }
-      },
-      {
-        selector: '.ai',
-        style: {
-          'background-color': '#e6ccff'
-        }
-      },
-      {
-        selector: '.cyber',
-        style: {
+    {
+      selector: 'node',
+      style: {
+        'background-color': 'white',
+        'border-color': '#333',
+        'border-width': 2,
+        'label': 'data(label)',
+        'text-valign': 'center',
+        'text-halign': 'center',
+        'shape': 'rectangle',
+        'text-wrap': 'wrap',
+        'text-max-width': '150px',
+        'font-size': '12px'
+      }
+    },
+    {
+      selector: 'edge',
+      style: {
+        'width': 2,
+        'line-color': '#333',
+        'target-arrow-color': '#333',
+        'target-arrow-shape': 'triangle',
+        'curve-style': 'bezier'
+      }
+    },
+    {
+      selector: 'edge[style = "dashed"]',
+      style: {
+        'width': 2,
+        'line-color': '#333',
+        'line-style': 'dashed',
+        'target-arrow-color': '#333',
+        'target-arrow-shape': 'triangle',
+        'curve-style': 'bezier'
+      }
+    },
+    {
+      selector: '.first',
+      style: {
+        'background-color': '#d4e6f7'
+      }
+    },
+    {
+      selector: '.second',
+      style: {
+        'background-color': '#ffd7b3'
+      }
+    },
+    {
+      selector: '.third',
+      style: {
+        'background-color': '#d5e8d4'
+      }
+    },
+    {
+      selector: '.recommended',
+      style: {
+        'line-style': 'dashed'
+      }
+    },
+    {
+      selector: '.choice',
+      style: {
+        'background-color': 'white'
+      }
+    },
+
+     // Generic Major Styling
+    {
+      selector: '.major',
+      style: {
+        'background-color': '#f0f0f0', // Default if not overridden
+        'border-color': '#333',
+        'border-width': 2,
+        'text-valign': 'top',
+        'text-halign': 'center',
+        'font-weight': 'bold'
+      }
+    },
+
+    //Color Overrides
+    {
+      selector: '.ai, .ai-major',
+       style: {
+        'background-color': '#e6ccff'
+      }
+    },
+    {
+       selector: '.cyber, .cyber-major',
+       style: {
           'background-color': '#ffcccc'
         }
-      },
-      {
-        selector: '.digital',
+    },
+    {
+      selector: '.digital, .digital-major',
         style: {
           'background-color': '#ffe6cc'
         }
-      },
-      {
-        selector: '.game',
+    },
+    {
+        selector: '.game, .game-major',
         style: {
           'background-color': '#ccffe6'
         }
-      },
-      {
-        selector: '.software',
-        style: {
+    },
+    {
+      selector: '.software, .software-major',
+       style: {
           'background-color': '#fff2cc'
         }
-      },
-      {
-        selector: '.major',
-        style: {
-          'background-color': '#f0f0f0',
-          'border-color': '#333',
-          'border-width': 2,
+    },
+
+    {
+      selector: ':parent',
+      style: {
+        'background-opacity': 0.333,
+        'text-valign': 'top'
+      }
+    }
+    ,
+    {
+      selector: '.level-100',
+      style: {
+          'background-color': '#d4e6f7',
           'text-valign': 'top',
           'text-halign': 'center',
           'font-weight': 'bold'
-        }
-      },
-      {
-        selector: ':parent',
-        style: {
-          'background-opacity': 0.333,
-          'text-valign': 'top'
-        }
       }
+    },
+    {
+        selector: '.level-200',
+        style: {
+            'background-color': '#ffd7b3',
+            'text-valign': 'top',
+            'text-halign': 'center',
+            'font-weight': 'bold'
+        }
+    },
+    {
+        selector: '.level-300',
+        style: {
+            'background-color': '#d5e8d4',
+            'text-valign': 'top',
+            'text-halign': 'center',
+            'font-weight': 'bold'
+        }
+    }
   ],
 
   elements: [
@@ -154,35 +186,35 @@ const cy = cytoscape({
       { data: { id: 'CSIT321', label: 'CSIT321\nProject\n(12cp Annual)' }, classes: 'third' },
 
       // AI and Big Data Major
-      { data: { id: 'MAJ44204', label: 'Artificial Intelligence and Big Data Major' }, classes: 'major' },
+      { data: { id: 'MAJ44204', label: 'Artificial Intelligence and Big Data Major' }, classes: 'major ai-major' },
       { data: { id: 'CSCI218', label: 'CSCI218\nFoundations of AI' }, classes: 'ai', parent: 'MAJ44204' },
       { data: { id: 'CSCI323', label: 'CSCI323\nModern AI' }, classes: 'ai', parent: 'MAJ44204' },
       { data: { id: 'ISIT312', label: 'ISIT312\nBig Data Management' }, classes: 'ai', parent: 'MAJ44204' },
       { data: { id: 'CSCI316', label: 'CSCI316\nBig Data Mining' }, classes: 'ai', parent: 'MAJ44204' },
 
       // Cyber Security Major
-      { data: { id: 'MAJ40516', label: 'Cyber Security Major' }, classes: 'major' },
+      { data: { id: 'MAJ40516', label: 'Cyber Security Major' }, classes: 'major cyber-major' },
       { data: { id: 'CSCI262_1', label: 'CSCI262\nSystem Security' }, classes: 'cyber', parent: 'MAJ40516' },
       { data: { id: 'CSIT375', label: 'CSIT375\nAI and Cybersecurity' }, classes: 'cyber', parent: 'MAJ40516' },
       { data: { id: 'CSCI369', label: 'CSCI369\nEthical Hacking' }, classes: 'cyber', parent: 'MAJ40516' },
       { data: { id: 'CSIT302', label: 'CSIT302\nCybersecurity' }, classes: 'cyber', parent: 'MAJ40516' },
 
       // Digital Systems Security Major
-      { data: { id: 'MAJ40164', label: 'Digital Systems Security Major' }, classes: 'major' },
+      { data: { id: 'MAJ40164', label: 'Digital Systems Security Major' }, classes: 'major digital-major' },
       { data: { id: 'CSCI262_2', label: 'CSCI262\nSystem Security' }, classes: 'digital', parent: 'MAJ40164' },
       { data: { id: 'CSCI361', label: 'CSCI361\nCryptography' }, classes: 'digital', parent: 'MAJ40164' },
       { data: { id: 'CSCI368', label: 'CSCI368\nNetwork Security' }, classes: 'digital', parent: 'MAJ40164' },
       { data: { id: 'CSIT328', label: 'CSIT328\nWeb Security' }, classes: 'digital', parent: 'MAJ40164' },
 
       // Game and Mobile Development Major
-      { data: { id: 'MAJ41477', label: 'Game and Mobile Development Major' }, classes: 'major' },
+      { data: { id: 'MAJ41477', label: 'Game and Mobile Development Major' }, classes: 'major game-major' },
       { data: { id: 'CSIT242', label: 'CSIT242\nMobile App Dev' }, classes: 'game', parent: 'MAJ41477' },
       { data: { id: 'CSCI336', label: 'CSCI336\nInteractive Graphics' }, classes: 'game', parent: 'MAJ41477' },
       { data: { id: 'CSCI356', label: 'CSCI356\nGame Engine' }, classes: 'game', parent: 'MAJ41477' },
       { data: { id: 'CSCI388', label: 'CSCI388\nVR/AR' }, classes: 'game', parent: 'MAJ41477' },
 
       // Software Engineering Major
-      { data: { id: 'MAJ40277', label: 'Software Engineering Major' }, classes: 'major' },
+      { data: { id: 'MAJ40277', label: 'Software Engineering Major' }, classes: 'major software-major' },
       { data: { id: 'CSCI318', label: 'CSCI318\nSoftware Engineering' }, classes: 'software', parent: 'MAJ40277' },
       { data: { id: 'CSCI334', label: 'CSCI334\nSoftware Design' }, classes: 'software', parent: 'MAJ40277' },
       { data: { id: 'CSIT377', label: 'CSIT377\nEnterprise Web Dev' }, classes: 'software', parent: 'MAJ40277' },
@@ -194,6 +226,11 @@ const cy = cytoscape({
 
       // Choice between CSCI251 and CSIT213
       { data: { id: 'Choice', label: 'OR' }, classes: 'choice' },
+
+      // Level Boxes
+      { data: { id: 'Level100Box', label: '100 Level (Core)' }, classes: 'level-100' },
+        { data: { id: 'Level200Box', label: '200 Level (Core)' }, classes: 'level-200' },
+      { data: { id: 'Level300Box', label: '300 Level (Core)' }, classes: 'level-300' },
 
       // Edges (Connections)
       // Core Dependencies
@@ -268,13 +305,13 @@ const cy = cytoscape({
 });
 
 var defaults = {
-  container: document.getElementById('cy-nav'), // html dom element
-  viewLiveFramerate: 0, // set false to update graph pan only on drag end; set 0 to do it instantly; set a number (frames per second) to update not more than N times per second
-  thumbnailEventFramerate: 30, // max thumbnail's updates per second triggered by graph updates
-  thumbnailLiveFramerate: false, // max thumbnail's updates per second. Set false to disable
-  dblClickDelay: 200, // milliseconds
-  removeCustomContainer: false, // destroy the container specified by user on plugin destroy
-  rerenderDelay: 100, // ms to throttle rerender updates to the panzoom for performance
+  container: document.getElementById('cy-nav'),
+  viewLiveFramerate: 0,
+  thumbnailEventFramerate: 30,
+  thumbnailLiveFramerate: false,
+  dblClickDelay: 200,
+  removeCustomContainer: false,
+  rerenderDelay: 100,
 };
 
-var nav = cy.navigator(defaults); // get navigator instance, nav
+var nav = cy.navigator(defaults);
