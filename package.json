@@ -1,0 +1,10 @@
+{
+  "name": "js",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "cytoscape": "3.0.0",
+    "cytoscape-dagre": "^1.6.0",
+    "cytoscape-navigator": "2.0.1"
+  }
+}
